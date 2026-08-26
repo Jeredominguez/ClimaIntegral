@@ -536,12 +536,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     bottom: -24px; right: -24px;
     background: var(--blanco);
     border-radius: 20px;
-    padding: 20px 26px;
+    padding: clamp(12px, 4vw, 20px) clamp(16px, 5vw, 26px);
     box-shadow: var(--sombra-media);
-    display: flex; align-items: center; gap: 12px;
+    display: flex; align-items: center; gap: clamp(8px, 2vw, 12px);
+    max-width: 62%;
 }
-.nosotros-badge-flotante strong { font-family: 'Outfit', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--dorado); }
-.nosotros-badge-flotante span { font-size: 0.78rem; font-weight: 700; color: var(--gris-600); line-height: 1.2; }
+.nosotros-badge-flotante strong { font-family: 'Outfit', sans-serif; font-size: clamp(1.5rem, 6vw, 2.4rem); font-weight: 800; color: var(--dorado); flex-shrink: 0; }
+.nosotros-badge-flotante span { font-size: clamp(0.68rem, 2.2vw, 0.78rem); font-weight: 700; color: var(--gris-600); line-height: 1.2; }
 
 .nosotros-contenido h2 { font-size: clamp(1.8rem, 3.4vw, 2.4rem); margin-bottom: 20px; }
 .nosotros-contenido p { color: var(--gris-600); margin-bottom: 16px; font-size: 1.02rem; }
@@ -727,4 +728,31 @@ a.contacto-item:hover { background: rgba(255,255,255,0.1); transform: translateX
     .contacto-card { padding: 32px 24px; }
     .chip-1, .chip-2 { position: static; margin: 10px auto; width: fit-content; }
     .hero-visual { flex-direction: column; gap: 12px; }
+
+    /* En pantallas chicas se unen en una sola tarjeta (panel oscuro + franja de stat) en vez de dos bloques flotantes separados */
+    .nosotros-visual {
+        max-width: 300px;
+        margin: 0 auto;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: var(--sombra-fuerte);
+    }
+    .nosotros-card-principal {
+        width: 100%;
+        aspect-ratio: auto;
+        border-radius: 0;
+        padding: 40px 24px 32px;
+        gap: 14px;
+        box-shadow: none;
+    }
+    .nosotros-card-principal i { font-size: 3.2rem; }
+    .nosotros-badge-flotante {
+        position: static;
+        width: 100%;
+        max-width: none;
+        border-radius: 0;
+        justify-content: center;
+        box-shadow: none;
+        padding: 18px 20px;
+    }
 }
